@@ -44,6 +44,8 @@ function configurePackage(api) {
   api.use('tracker', 'client');
   api.use('ddp');
   api.use('ejson');
+  api.use('local:collections');
+  api.use('local:utils');
   api.use('meteorhacks:unblock@1.1.0');
   api.use('cosmos:browserify@0.7.0');
   api.use('local:plans-manager');

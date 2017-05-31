@@ -5,6 +5,8 @@ Package.describe({
 
 Package.on_use(function(api) {
   api.use(["underscore"])
+  api.use('local:collections');
+  api.use('local:utils');
   api.export("PlansManager", ["client", "server"]);
   api.add_files("lib/plans_manager.js", ["client", "server"]);
 });

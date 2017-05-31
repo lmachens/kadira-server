@@ -26,6 +26,8 @@ function configure(api) {
   api.use("ejson", "client");
   api.use("minimongo", "client");
   api.use("underscore", "client");
+  api.use('local:collections');
+  api.use('local:utils');
   api.use("raix:eventemitter@0.1.2", "client");
   api.use("cosmos:browserify@0.7.0");
   api.addFiles("lib/time_store.js", "client");

@@ -15,6 +15,8 @@ Package.onUse(function(api) {
 function configurePackage(api) {
   api.versionsFrom('METEOR@1.0');
   api.use('raix:eventemitter@0.1.3');
+  api.use('local:collections');
+  api.use('local:utils');
 
   api.addFiles([
     'lib/user_events.js',

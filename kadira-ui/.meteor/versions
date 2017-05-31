@@ -58,6 +58,7 @@ keiths:octicons@1.2.2
 launch-screen@1.1.1
 less@2.7.9
 livedata@1.0.18
+local:collections@0.0.0
 local:debug-store@0.0.0
 local:jobs@0.0.0
 local:kadira-data@0.0.0
@@ -66,6 +67,7 @@ local:plans-manager@0.0.0
 local:state-manager@0.0.0
 local:url-state-manager@0.0.0
 local:user-events@0.0.0
+local:utils@0.0.0
 localstorage@1.0.12
 logging@1.1.17
 markdown@1.0.11
