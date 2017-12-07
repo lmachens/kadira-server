@@ -21,6 +21,12 @@ export ENGINE_PORT=11011
 export UI_PORT=4000
 export UI_URL="http://localhost:$UI_PORT"
 
+# CPU Profiler needs a s3 bucket
+export AWS_DEFAULT_REGION="us-west-2"
+# it's better to setup IAM role instead of creds later
+#export AWS_ACCESS_KEY_ID="AWSID"
+#export AWS_SECRET_ACCESS_KEY="AWSKEY"
+
 # Monitoring Setup
 
 export LIBRATO_EMAIL

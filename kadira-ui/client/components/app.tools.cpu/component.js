@@ -200,7 +200,7 @@ component.prototype.jobId = function() {
 component.prototype.loadRemoteProfile = function(id) {
   this.set("profile", null);
   var self = this;
-  var url = "https://profdata.kadira.io/" + id + ".js";
+  var url = Meteor.settings.public.s3Url + id + ".js";
   var headers = {headers: {"Content-Type": "application/json"}};
   HTTP.get(url, headers, function(error, result){
     if(error && error.response.statusCode === 403){

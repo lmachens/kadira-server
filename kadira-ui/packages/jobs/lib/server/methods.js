@@ -1,17 +1,31 @@
 var AWS = Npm.require('aws-sdk');
 
 var createAWSFile = function(jobId, callback){
-  callback = callback || function(){};
-  var s3 = new AWS.S3();
+  callback = callback || function(){}
+  AWS.config.update({
+    signatureVersion: 'v4'
+  });
+  if(!process.env.AWS_BUCKET){
+    throw new Error('plese set the env AWS_BUCKET');
+    process.exit(1);
+  }
+  if(!process.env.AWS_DEFAULT_REGION){
+    throw new Error('plese set the env AWS_DEFAULT_REGION');
+    process.exit(1);
+  }
 
-  AWS.config.region = 'us-east-1';
+  var s3 = new AWS.S3({
+   endpoint: 's3-'+ process.env.AWS_DEFAULT_REGION +'.amazonaws.com',
+   signatureVersion: 'v4',
+   region: process.env.AWS_DEFAULT_REGION
+  });
+
   var params = {
-    Bucket: 'profdata.kadira.io',
+    Bucket: process.env.AWS_BUCKET,
     ContentType: 'application/json',
     ACL: 'public-read'
   };
   params['Key'] = jobId + '.js';
-
   s3.getSignedUrl('putObject', params, callback);
 }
 
