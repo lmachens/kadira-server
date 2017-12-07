@@ -1,3 +1,13 @@
+#!/usr/bin/env bash
+
+# ensure running bash
+if ! [ -n "$BASH_VERSION" ];then
+    echo "this is not bash, calling self with bash....";
+    SCRIPT=$(readlink -f "$0")
+    /bin/bash $SCRIPT
+    exit;
+fi
+
 # DB settings
 export APP_MONGO_URL="mongodb://app:password@candidate.53.mongolayer.com:10478,candidate.54.mongolayer.com:10216/tkadira-app?replicaSet=set-56175e62147ca745d8000761"
 export APP_MONGO_OPLOG_URL="mongodb://oplog:password@candidate.53.mongolayer.com:10478,candidate.54.mongolayer.com:10216/local?authSource=tkadira-app&replicaSet=set-56175e62147ca745d8000761"

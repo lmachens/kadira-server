@@ -1,4 +1,12 @@
-#/bin/bash
+#!/usr/bin/env bash
+
+# ensure running bash
+if ! [ -n "$BASH_VERSION" ];then
+    echo "this is not bash, calling self with bash....";
+    SCRIPT=$(readlink -f "$0")
+    /bin/bash $SCRIPT
+    exit;
+fi
 
 APP_DB_URL=$APP_MONGO_URL \
 APP_DB_OPLOG_URL=$APP_MONGO_OPLOG_URL \
