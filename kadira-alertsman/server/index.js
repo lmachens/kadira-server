@@ -38,7 +38,11 @@ const {
     const tickManager = new TickManager({triggerInterval: parseInt(TICK_TRIGGER_INTERVAL, 10)});
     const metricsStore = new MetricsStore(KADIRA_API_URL);
     const rules = new RuleEngine();
-    const messenger = new Messenger(MAIL_URL, {loggingOnly: Boolean(MESSENGER_LOGGING_ONLY)});
+    let loggingOnly = true;
+    if(MESSENGER_LOGGING_ONLY === "0"){
+      loggingOnly = false;
+    }
+    const messenger = new Messenger(MAIL_URL, {loggingOnly});
 
     librato.configure({
       email: LIBRATO_EMAIL,
