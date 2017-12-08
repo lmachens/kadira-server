@@ -5,7 +5,7 @@ Package.describe({
 
 Npm.depends({
   "lru-cache": "2.6.4",
-  "mongo-sharded-cluster": "1.2.0"
+  "mongo-sharded-cluster": "2.x.x"
 });
 
 Package.onTest(function(api) {
