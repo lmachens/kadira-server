@@ -9,7 +9,8 @@ if ! [ -n "$BASH_VERSION" ];then
 fi
 
 # DB settings
-export APP_MONGO_URL="mongodb://mongodb://kadira.knotel.internal/kadira-app?replicaSet=kadira"
+export METEOR_ALLOW_SUPERUSER=1
+export APP_MONGO_URL="mongodb://kadira.knotel.internal/kadira-app?replicaSet=kadira"
 export APP_MONGO_OPLOG_URL="mongodb://kadira.knotel.internal/local?authSource=kadira-app&replicaSet=kadira"
 export DATA_MONGO_URL="mongodb://kadira.knotel.internal/kadira-data?replicaSet=kadira"
 export MAIL_URL="smtp://user:pass@smtp.mailgun.org:587"
