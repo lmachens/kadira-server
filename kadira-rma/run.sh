@@ -8,6 +8,12 @@ if ! [ -n "$BASH_VERSION" ];then
     exit;
 fi
 
-MONGO_SHARD=one \
-MONGO_URL=$DATA_MONGO_URL \
-  npm start
+#Main settings
+export MONGO_SHARD=one
+export MONGO_URL=$DATA_MONGO_URL
+
+mkdir -p /logs
+cd /app
+
+yarn install
+yarn start

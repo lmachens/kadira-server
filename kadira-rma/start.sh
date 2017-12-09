@@ -48,13 +48,13 @@ while [[ true ]]; do
   echo "`date`: start map-reduce process"
 
   dumpEnvVarsTo $ENV_FILE_NAME
-  set -x;
+#  set -x;
   if [ -z ${START_TIME+x} ] || [ -z ${END_TIME+x} ]; then
       mongo $(pick-mongo-primary $MONGO_METRICS_URL) profiles/$PROFILE.js providers/$PROVIDER.js $ENV_FILE_NAME lib.js mapreduce.js incremental-aggregation.js;
   else
       mongo $(pick-mongo-primary $MONGO_METRICS_URL) profiles/$PROFILE.js providers/$PROVIDER.js $ENV_FILE_NAME lib.js mapreduce.js batch-aggregation.js;
   fi
-  set +x;
+#  set +x;
   completedAt=$(date +%s)
   diff=$(($completedAt-$startedAt))
   newWaitTime=$(($WAIT_TIME-$diff))
