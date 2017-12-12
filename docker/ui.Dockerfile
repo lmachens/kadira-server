@@ -4,39 +4,21 @@ MAINTAINER Knotel
 VOLUME /logs
 
 # Install base
-RUN \
+RUN bash -cx "                                              \
  export DEBIAN_FRONTEND=noninteractive                   && \
  apt-get update -y                                       && \
- apt-get install -y                                         \
- curl git mc && \
- curl https://install.meteor.com/?release=1.4.3.2 | sh
+ apt-get install -y curl                                 && \
+ curl https://install.meteor.com/?release=1.4.3.2 | sh   && \
+ apt autoremove -y                                       && \
+ apt-get clean                                           && \
+ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*              \
+ "
 
-# curl git python-minimal build-essential                    \
-# apt-transport-https lsb-release                         && \
-## Install Node.js LTS and yarn
-# curl -sL https://deb.nodesource.com/setup_8.x |            \
-#                                          bash -         && \
-# curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |        \
-#                                       apt-key add -     && \
-# echo "deb https://dl.yarnpkg.com/debian/ stable main" |    \
-#         tee /etc/apt/sources.list.d/yarn.list           && \
-# apt-get update -y                                       && \
-# apt-get install -y nodejs yarn                          && \
-# apt autoremove -y                                       && \
-# apt-get clean                                           && \
-# rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-#
-## Install forever
-#RUN \
-# npm install -g forever
-#
-#COPY kadira-engine/ app/
-#
+COPY kadira-ui/ app/
+
 #CMD ["/app/run.sh"]
 
 
-#
-#
 #export METEOR_ALLOW_SUPERUSER=1
 #cd /app
 #meteor npm install --production
