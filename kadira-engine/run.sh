@@ -22,7 +22,7 @@ export PORT=$ENGINE_PORT
 mkdir -p /logs
 cd /app
 
-yarn install
+#yarn install
 
 forever    \
   -a                       \

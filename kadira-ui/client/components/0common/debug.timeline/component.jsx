@@ -46,7 +46,7 @@ var component = FlowComponents.define("debug.timeline", function(props) {
   this.onRendered(function() {
     if(sessionId) {
       var dom = this.find("#kd-timeline");
-      React.render(<TimelineComponent.Timeline sessionId={sessionId} debugStore={this.debugStoreInstance} />, dom);
+      ReactDOM.render(<TimelineComponent.Timeline sessionId={sessionId} debugStore={this.debugStoreInstance} />, dom);
     }
   });
 });

@@ -15,6 +15,8 @@ declare -a images=(
  "registry.knotable.com:443/knotel-kadira-engine"
  "registry.knotable.com:443/knotel-kadira-rma"
  "registry.knotable.com:443/knotel-kadira-api"
+ "registry.knotable.com:443/knotel-kadira-ui"
+ "registry.knotable.com:443/knotel-kadira-alertsman"
 )
 
 ################## docker setup ######################

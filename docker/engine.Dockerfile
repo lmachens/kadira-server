@@ -29,4 +29,6 @@ RUN \
 
 COPY kadira-engine/ app/
 
+RUN cd /app && yarn install
+
 CMD ["/app/run.sh"]

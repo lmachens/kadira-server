@@ -24,7 +24,7 @@ export NODE_ENV=production
 mkdir -p /logs
 cd /app
 
-yarn install
+#yarn install
 
 forever           \
  -a               \

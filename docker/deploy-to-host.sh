@@ -6,6 +6,7 @@ declare -a servers=(
 cd ~/.ssh
 key=master-knotel.com.pem
 APP_DB='mongodb://kadira.knotel.internal/kadira-app?replicaSet=kadira'
+APP_OPLOG="mongodb://kadira.knotel.internal/local?authSource=kadira-app&replicaSet=kadira"
 DATA_DB='mongodb://kadira.knotel.internal/kadira-data?replicaSet=kadira'
 MAIL_URL="smtp://user:pass@smtp.mailgun.org:587"
 ENGINE_PORT=11011
@@ -18,6 +19,8 @@ function launchServiceOnServer {
   ssh -i $key ubuntu@$1 bash -c " \
     echo 'Logging in...'        ; \
     docker login -u knotable -p d0ckerP^55 registry.knotable.com:443 && \
+    \
+    \
     docker tag registry.knotable.com:443/knotel-kadira-engine           \
     registry.knotable.com:443/knotel-kadira-engine:old 2>/dev/null    ; \
     docker pull registry.knotable.com:443/knotel-kadira-engine       && \
@@ -64,7 +67,25 @@ function launchServiceOnServer {
      -e PORT=$API_PORT              \
      -v /knotel/kadira/api:/logs    \
     registry.knotable.com:443/knotel-kadira-api ; \
-    docker rmi registry.knotable.com:443/knotel-kadira-api:old 2>/dev/null    
+    docker rmi registry.knotable.com:443/knotel-kadira-api:old 2>/dev/null ; \
+    \
+    \
+    docker tag registry.knotable.com:443/knotel-kadira-alertsman        \
+    registry.knotable.com:443/knotel-kadira-alertsman:old 2>/dev/null ; \
+    docker pull registry.knotable.com:443/knotel-kadira-alertsman    && \
+    docker rm -fv kadira-alertsman &>/dev/null                        ; \
+    sleep 2                          ; \
+    docker run -d                      \
+     --name kadira-alertsman           \
+     --hostname $1                     \
+     -p 11011:11011                    \
+     -e APP_MONGO_URL=$APP_DB          \
+     -e APP_MONGO_OPLOG_URL=$APP_OPLOG \
+     -e MAIL_URL=$MAIL_URL             \
+     -e API_PORT=$API_PORT             \
+     -v /knotel/kadira/alertsman:/logs \
+    registry.knotable.com:443/knotel-kadira-alertsman ; \
+    docker rmi registry.knotable.com:443/knotel-kadira-alertsman:old 2>/dev/null
   "
 }
 

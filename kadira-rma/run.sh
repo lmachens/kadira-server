@@ -15,5 +15,5 @@ export MONGO_URL=$DATA_MONGO_URL
 mkdir -p /logs
 cd /app
 
-yarn install
+#yarn install
 yarn start

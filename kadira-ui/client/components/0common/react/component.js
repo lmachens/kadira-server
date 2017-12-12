@@ -8,6 +8,6 @@ FlowComponents.define("react", function(props) {
     });
 
     var el = React.createElement(reactClass, reactProps);
-    React.render(el, dom);
+    ReactDOM.render(el, dom);
   });
 });
