@@ -7,7 +7,7 @@ VOLUME /logs
 RUN bash -cx "                                              \
  export DEBIAN_FRONTEND=noninteractive                   && \
  apt-get update -y                                       && \
- apt-get install -y curl python build-essential          && \
+ apt-get install -y curl git python build-essential          ; \
  curl https://install.meteor.com/?release=1.4.3.2 | sh   && \
  apt autoremove -y                                       && \
  apt-get clean                                           && \
