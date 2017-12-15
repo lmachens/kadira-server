@@ -1,9 +1,5 @@
 {
   "public": {
     "s3Url": "https://kadira-knotel-com.s3.us-west-2.amazonaws.com/",
-    "loginState": {
-      "domain": "",
-      "cookieName": "kadira-dev-login-state"
-    }
   }
 }
