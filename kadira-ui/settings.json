@@ -9,18 +9,5 @@
       "domain": "",
       "cookieName": "kadira-dev-login-state"
     }
-  },
-
-  "tender": {
-    "secret": "71825e70-d11d-489b-b273-2afdca024fd6"
-  },
-
-  "stripe": {
-    "kadirahq": {
-      "apiKey": "sk_test_22QITCBPhqEaEKjHXK5BBwO8",
-      "publishableKey": "pk_test_Tc1iVNRP9p8o7zgYWoWjZnm4",
-      "appName": "KadiraHQ",
-      "appLogo": "https://kadira.io/favicon.ico"
-    }
   }
 }
