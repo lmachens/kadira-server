@@ -24,8 +24,7 @@ function cioOnClient (siteId) {
       var properties = {};
       if(user.createdAt) {
         properties["created_at"] = Math.ceil(user.createdAt.getTime()/1000);
-        properties.subscribed =
-          (user.stripe && user.stripe.verified)? true: false;
+        properties.subscribed = true;
         properties.plan = user.plan || "free";
         var millisAfterRegister = (Date.now() - user.createdAt.getTime());
         properties.daysAfterRegister =

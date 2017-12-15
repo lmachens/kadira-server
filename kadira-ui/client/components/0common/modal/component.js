@@ -36,9 +36,7 @@ component.prototype.onHide = function() {
 };
 
 component.prototype.hideOtherWindowObjects = function() {
-  $("#intercom-container").hide();
 };
 
 component.prototype.resetOtherWindowObjects = function() {
-  $("#intercom-container").show();
 };
