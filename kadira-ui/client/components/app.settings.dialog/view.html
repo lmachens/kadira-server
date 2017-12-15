@@ -63,11 +63,6 @@ export KADIRA_APP_SECRET={{state$currentAppSecret}}</code></pre>
   </div>
   {{#if state$isOwner}}
     <div class="app-pricing">
-      <legend>{{i18n "settings.pricing"}}</legend>
-      {{> render
-        component="app.setPlan"
-        currentPricingType=state$pricingType
-      }}
       <br/>
       <button class="btn btn-sm btn-primary" id="save-pricing-type">{{i18n "common.save"}}</button>
       <br/>
