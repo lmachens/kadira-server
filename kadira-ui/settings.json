@@ -22,10 +22,5 @@
       "appName": "KadiraHQ",
       "appLogo": "https://kadira.io/favicon.ico"
     }
-  },
-
-  "meteorDevelopers": {
-    "clientId": "HcempmSyaawiyb4G4",
-    "secret": "snC3snsmTebC8HHCwwhqhHaAzAFxtFsQRL"
   }
 }
