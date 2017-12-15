@@ -11,8 +11,6 @@ Package.on_use(function(api) {
   api.use('underscore');
   api.use('mongo');
   api.use('tracker');
-  api.use('local:collections');
-  api.use('local:utils');
   api.export("PermissionsMananger", ["client", "server"]);
 });
 

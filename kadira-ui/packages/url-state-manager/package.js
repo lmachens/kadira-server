@@ -6,8 +6,6 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom("1.1.0.2");
   api.use(["underscore", "tracker"]);
-  api.use('local:collections');
-  api.use('local:utils');
   api.addFiles("lib/url-state-manager.js");
   api.export("UrlStateManager", ["client", "server"]);
 });
@@ -21,8 +19,6 @@ Package.onTest(function(api) {
     "meteorhacks:flow-router@1.16.2"
   ]);
   api.use("local:url-state-manager");
-  api.use('local:collections');
-  api.use('local:utils');
   api.addFiles("test/lib/router.js");
   api.addFiles("lib/url-state-manager.js", "client");
   api.addFiles("test/url-state-manager.js", "client");

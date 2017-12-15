@@ -11,8 +11,6 @@ Package.onUse(function(api) {
     "underscore", 
     "tracker"
   ]);
-  api.use('local:collections');
-  api.use('local:utils');
   api.addFiles("lib/state-manager.jsx");
   api.export("StateManager", ["client", "server"]);
 });
@@ -25,8 +23,6 @@ Package.onTest(function(api) {
     "jsx",
     "raix:eventemitter"
   ]);
-  api.use('local:collections');
-  api.use('local:utils');
   api.use("local:state-manager");
   api.addFiles("test/state-manager.js");
 });
