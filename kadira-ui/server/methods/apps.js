@@ -40,7 +40,6 @@ Meteor.methods({
   "apps.delete": function(appId){
     check(appId, String);
     Apps.remove({_id:appId, owner: this.userId});
-    Alerts.remove({"meta.appId": appId});
   },
   "apps.updatePricingType": function(appId, pricingType){
     check(pricingType, Match.OneOf("free", "paid"));
@@ -53,7 +52,6 @@ Meteor.methods({
     var app = Apps.findOne({_id: appId}, {owner: 1, plan: 1}) || {};
 
     if(pricingType === "free" && app.plan !== "free") {
-      KadiraAccounts.checkIsAppDowngradable(app, "free");
     }
 
     if(currentUserId !== app.owner){

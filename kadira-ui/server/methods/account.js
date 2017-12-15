@@ -38,39 +38,3 @@ KadiraAccounts._getMedianHostCount = function(hostUsageByTime, noDataCount) {
   }
   return Math.floor(median);
 };
-
-function getAlertsGap(appId, plan) {
-  var allowedAlertsCount = PlansManager.getConfig("alertsPerApp", plan);
-  var currentUsage =
-    Alerts.find({"meta.appId": appId}, {fields: {_id: 1}}).count();
-  return allowedAlertsCount - currentUsage;
-}
-
-function getCollaboratorsGap(appId, plan) {
-  var allowedCollaboratorsCount =
-    PlansManager.getConfig("sharedUsersPerApp", plan);
-  var app = Apps.findOne({_id: appId}, {fields: {perAppTeam: 1}});
-  var currentUsage = 0;
-  if(app && app.perAppTeam) {
-    currentUsage = app.perAppTeam.length;
-  }
-  return allowedCollaboratorsCount - currentUsage;
-}
-
-KadiraAccounts.checkIsAppDowngradable = function(app, plan) {
-  var alertsGap = getAlertsGap(app._id, plan);
-  if(alertsGap < 0) {
-    var alerts = alertsGap * -1;
-    throw new Meteor.Error(403, "You need remove " +
-      alerts + " alert(s) from \'" + app.name +"\' to downgrade.");
-  }
-
-  var collaboratorsGap = getCollaboratorsGap(app._id, plan);
-  console.log(app, plan, collaboratorsGap, alertsGap)
-  if(collaboratorsGap < 0) {
-    var collaborators = collaboratorsGap * -1;
-    throw new Meteor.Error(403, "You need remove " +
-      collaborators + " collaborator(s) from \'" +
-      app.name +"\' to downgrade.");
-  }
-};
