@@ -18,8 +18,8 @@ Meteor.methods({
       created: new Date(),
       owner: this.userId,
       secret: Meteor.uuid(),
-      plan: 'plan',
-      shard: 'shard',
+      plan: plan,
+      shard: shard,
       subShard: subShard,
       pricingType: pricingType
     };
