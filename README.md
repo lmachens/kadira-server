@@ -27,10 +27,10 @@ password: admin
 
 ## Meteor apm settings
 `metricsLifetime` sets the maximum lifetime of the metrics. Old metrics are removed after each aggregation.
-The default value is 604800000 (1000 * 60 * 60 * 24 * 7 ^= 7 days).
+The default value is 2592000000 (1000 * 60 * 60 * 24 * 7 ^= 30 days).
 
 ```
-"metricsLifetime": 604800000
+"metricsLifetime": 2592000000
 ```
 
 ## Meteor client settings
