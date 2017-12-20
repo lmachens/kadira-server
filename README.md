@@ -1,20 +1,22 @@
-# APM
+# Knotel Kadira
 
 This project reduces the original Kadira APM to a single Meteor project.
 Most of the original features are working (like Slack alerts), but there is still a lot of work.
-Feel free to contribute!
+Includes Knotel private data! DO NOT contribute without cleanup!
 
 ## Running it
 
 A mongo replica set is required!
+Check conf/start_instance.sh for settings consumed by node.js and meteor. 
 
 ```
-cd apm
-meteor npm i
-meteor
+cd docker
+./build.sh
+./push-to-registry.sh
+./deploy-to-host.sh
 ```
 
-This opens the following ports:
+This uses the following ports:
 
 * UI: 3000
 * RMA: 11011
@@ -22,8 +24,11 @@ This opens the following ports:
 
 ## Login
 
-username: admin@admin.com  
-password: admin  
+If running on new Replica Set, the app creates 'admin' user:
+email: admin@admin.com
+password: admin
+
+For now, users must be added to the collection 'users' manually before inviting them to collaborate the app. Without doin this, new users become pending collaborators and get an email with invitation link, but can't login using their emails.  This will be fixed in future.
 
 ## Meteor apm settings
 `metricsLifetime` sets the maximum lifetime of the metrics. Old metrics are removed after each aggregation.
@@ -34,15 +39,17 @@ The default value is 2592000000 (1000 * 60 * 60 * 24 * 7 ^= 30 days).
 ```
 
 ## Meteor client settings
+When running without NGINX, you can use the following:
 ```
 "kadira": {
     "appId": "...",
     "appSecret": "...",
     "options": {
-        "endpoint": "http://localhost:11011"
+        "endpoint": "http://your_host:11011"
     }
 },
 ```
+But as our webapp works using HTTPS, metrics and errors should be collected using HTTPS connection to APM, too.
 
 ## Changes to original Kadira
 
@@ -55,5 +62,8 @@ The default value is 2592000000 (1000 * 60 * 60 * 24 * 7 ^= 30 days).
 
 ## ToDo
 
+* Add new users when sending collaboration invitations.
+* Knotel-independent configuration for sharing with Knotable.
+* Replace invalid links to old kadira docs.
+__
 * Direct db access of alertsman (apm/server/alertsman/server.js) and remove api (apm/server/api/server.js)
-* Replace invalid links to old kadira docs
