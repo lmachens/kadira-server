@@ -1,32 +1,69 @@
-Meteor Development Group has bought Kadira APM from Arunoda. We have made the original Kadira code available under the MIT License in this GitHub repository.
+# Knotel Kadira
 
-As the code we're running in Galaxy has diverged, we will not be running this repository as an open source project. We've started a conversation with potential maintainers of a community fork.
+This project reduces the original Kadira APM to a single Meteor project.
+Most of the original features are working (like Slack alerts), but there is still a lot of work.
+Includes Knotel private data! DO NOT contribute without cleanup!
 
-Arunoda uses the name Kadira for other projects and still owns the trademark on the "Kadira" name. Arunoda requests that public forks should choose a new name.
+## Running it
 
-# Kadira APM
-
-This is a set of components you need to run Kadira in your system.
-
-> The following instructions are not production deployment configurations. It's meant for running for testing.
-
-## Initial Setup
-
-Open `init-shell.sh` and update configurations.
-Make sure to set fresh DB configurations before getting started.
-
-Then run following three components by visiting their directories:
-
-* kadira-engine
-* kadira-rma
-* kadira-ui
-
-## Connecting with Kadira Agent
-
-You you are ready to connect your app into Kadira. Since we are running with a custom setup, you need to export following environment variable before using Kadira in your app:
+A mongo replica set is required!
+Check conf/start_instance.sh for settings consumed by node.js and meteor. 
 
 ```
-export KADIRA_OPTIONS_ENDPOINT=http://localhost:11011
+cd docker
+./build.sh
+./push-to-registry.sh
+./deploy-to-host.sh
 ```
 
-> Here's we've assumed http://localhost:11011 as the kadira-engine URL.
+This uses the following ports:
+
+* UI: 3000
+* RMA: 11011
+* API: 7007
+
+## Login
+
+If running on new Replica Set, the app creates 'admin' user:
+email: admin@admin.com
+password: admin
+
+For now, users must be added to the collection 'users' manually before inviting them to collaborate the app. Without doin this, new users become pending collaborators and get an email with invitation link, but can't login using their emails.  This will be fixed in future.
+
+## Meteor apm settings
+`metricsLifetime` sets the maximum lifetime of the metrics. Old metrics are removed after each aggregation.
+The default value is 2592000000 (1000 * 60 * 60 * 24 * 7 ^= 30 days).
+
+```
+"metricsLifetime": 2592000000
+```
+
+## Meteor client settings
+When running without NGINX, you can use the following:
+```
+"kadira": {
+    "appId": "...",
+    "appSecret": "...",
+    "options": {
+        "endpoint": "http://your_host:11011"
+    }
+},
+```
+But as our webapp works using HTTPS, metrics and errors should be collected using HTTPS connection to APM, too.
+
+## Changes to original Kadira
+
+* Reduce to one project
+* Added MongoDB indexes
+* Removed MongoDB shards
+* Remove raw data after processed
+* Use Meteor 1.6 (Node v8)
+* Removed premium packages
+
+## ToDo
+
+* Add new users when sending collaboration invitations.
+* Knotel-independent configuration for sharing with Knotable.
+* Replace invalid links to old kadira docs.
+__
+* Direct db access of alertsman (apm/server/alertsman/server.js) and remove api (apm/server/api/server.js)

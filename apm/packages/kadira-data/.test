@@ -1,0 +1,2 @@
+#!/bin/bash
+METEOR_ENV=test meteor test-packages ./ $@
