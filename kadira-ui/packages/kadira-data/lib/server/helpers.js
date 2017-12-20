@@ -51,7 +51,7 @@ KadiraData._authorize = function(userId, dataKey, args) {
     });
   }
 
-  if(Utils.isAdmin(user)){
+  if(!!user.admin){
     return;
   }
 

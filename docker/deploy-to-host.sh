@@ -67,25 +67,7 @@ function launchServiceOnServer {
      -e PORT=$API_PORT              \
      -v /knotel/kadira/api:/logs    \
     registry.knotable.com:443/knotel-kadira-api ; \
-    docker rmi registry.knotable.com:443/knotel-kadira-api:old 2>/dev/null ; \
-    \
-    \
-    docker tag registry.knotable.com:443/knotel-kadira-alertsman        \
-    registry.knotable.com:443/knotel-kadira-alertsman:old 2>/dev/null ; \
-    docker pull registry.knotable.com:443/knotel-kadira-alertsman    && \
-    docker rm -fv kadira-alertsman &>/dev/null                        ; \
-    sleep 2                          ; \
-    docker run -d                      \
-     --name kadira-alertsman           \
-     --hostname $1                     \
-     -p 11011:11011                    \
-     -e APP_MONGO_URL=$APP_DB          \
-     -e APP_MONGO_OPLOG_URL=$APP_OPLOG \
-     -e MAIL_URL=$MAIL_URL             \
-     -e API_PORT=$API_PORT             \
-     -v /knotel/kadira/alertsman:/logs \
-    registry.knotable.com:443/knotel-kadira-alertsman ; \
-    docker rmi registry.knotable.com:443/knotel-kadira-alertsman:old 2>/dev/null
+    docker rmi registry.knotable.com:443/knotel-kadira-api:old 2>/dev/null
   "
 }
 

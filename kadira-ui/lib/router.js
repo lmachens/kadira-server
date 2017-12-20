@@ -89,7 +89,6 @@ FlowRouter.route("/apps/:appId/:section/:subSection", {
       Subscriptions.subscribe("apps.pendingUsers", appId));
     this.register("collaborators",
       Subscriptions.subscribe("apps.collaborators", appId));
-    this.register("alerts", Subscriptions.subscribe("alerts", appId));
     this.register("admin", Subscriptions.subscribe("apps.admin", appId));
   },
   action: function() {
