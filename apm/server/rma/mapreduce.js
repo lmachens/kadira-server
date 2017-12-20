@@ -24,7 +24,7 @@ MapReduce = function(SourceColl, OutCollection, map, reduce, options) {
   });
 
   var diff = Date.now() - startAt;
-  console.log(`   fetched ${count} of ${SourceColl._name} in ${diff} ms'`);
+//  console.log(`   fetched ${count} of ${SourceColl._name} in ${diff} ms'`);
 
   var bulk = OutCollection.rawCollection().initializeOrderedBulkOp();
 
@@ -46,5 +46,5 @@ MapReduce = function(SourceColl, OutCollection, map, reduce, options) {
     Meteor.wrapAsync(bulk.execute, bulk)();
   }
   diff = Date.now() - startAt;
-  console.log(`   writing completed in ${diff} ms`);
+//  console.log(`   writing completed in ${diff} ms`);
 };
