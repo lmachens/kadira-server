@@ -1,0 +1,9 @@
+<template name="navigation">
+  <ul class="nav nav-pills navigation">
+    {{#each state$navs}}
+      <li role="presentation" class="{{#if active}}active{{/if}} pills-sm {{section}}">
+        <a href="{{url}}" target={{target}} >{{label}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</template>

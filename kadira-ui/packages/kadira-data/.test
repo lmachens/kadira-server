@@ -1,2 +1,0 @@
-#!/bin/bash
-METEOR_ENV=test MONGO_SHARD_URL_one=mongodb://localhost/hello meteor test-packages ./ $@
