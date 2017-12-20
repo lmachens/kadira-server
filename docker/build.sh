@@ -9,7 +9,7 @@ if ! [ -n "$BASH_VERSION" ];then
 fi
 
 declare -a images=(
-  "registry.knotable.com:443/knotel-kadira"
+  "registry.knotable.com:443/knotel-kadira docker/Dockerfile"
 )
 
 ################## docker setup ######################
@@ -89,7 +89,7 @@ function buildImage {
 for image in "${images[@]}"
 do
   buildImage $image || echo -e "\n\n$(tput setaf 1; tput setab 7)Image building process shows error! Aborting.$(tput sgr 0)\n\n"
-  $sudo docker rmi $(docker images --filter "label=to_remove=yes" -q) 2>/dev/null
+  $sudo docker rmi $($sudo docker images --filter "label=to_remove=yes" -q) 2>/dev/null
 done
 
 echo -e "\nDONE!\n"
