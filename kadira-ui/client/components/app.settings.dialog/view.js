@@ -35,8 +35,9 @@ Template["app.settings.dialog"].events({
     e.preventDefault();
     FlowComponents.callAction("resetView");
   },
-  "click #save-pricing-type": function(e) {
+  "click #save-pricing-type": function(e, tmpl) {
     e.preventDefault();
-    FlowComponents.callAction("savePricingType", 'paid');
+    var appPricingType = tmpl.$("input[name=app-pricing-type]:checked").val();
+    FlowComponents.callAction("savePricingType", appPricingType);
   }
 });

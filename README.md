@@ -1,5 +1,3 @@
-At first run on new DB, login as `admin@gmail.com` / `admin` and change the password.
-
 Meteor Development Group has bought Kadira APM from Arunoda. We have made the original Kadira code available under the MIT License in this GitHub repository.
 
 As the code we're running in Galaxy has diverged, we will not be running this repository as an open source project. We've started a conversation with potential maintainers of a community fork.

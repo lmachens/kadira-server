@@ -37,21 +37,6 @@ if(ENV.SUBSHARD_COUNT) {
   query['value.subShard'] = {$mod: [parseInt(ENV.SUBSHARD_COUNT), parseInt(ENV.SUBSHARD_SEGMENT)]};
 }
 
-if (!appDb.mapReduceProfileConfig.findOne()) {
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'1min',provider:'methods',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'1min',provider:'errors',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'1min',provider:'pubsub',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'1min',provider:'system',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'3hour',provider:'methods',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'3hour',provider:'errors',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'3hour',provider:'pubsub',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'3hour',provider:'system',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'30min',provider:'methods',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'30min',provider:'errors',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'30min',provider:'pubsub',shard:"one"}});
-  appDb.mapReduceProfileConfig.insert({lastTime: new Date(), _id:{profile:'30min',provider:'system',shard:"one"}});
-}
-
 var config = appDb.mapReduceProfileConfig.findOne(profileConfigQuery);
 if(config){
   var lastTime = config.lastTime.getTime();
