@@ -25,5 +25,5 @@ cleanup = function(startTime) {
       }))
   );
   var diff = Date.now() - startAt;
-  console.log(`   cleaned up ${removed} in ${diff} ms`);
+//  console.log(`   cleaned up ${removed} in ${diff} ms`);
 };
