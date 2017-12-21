@@ -40,9 +40,9 @@ app.use(require('./lib/middlewares/appinfo'));
 // Note: Drops all requests without an appId.
 app.use(
   require('./lib/middlewares/ratelimit')({
-    limit: 30,
-    resetInterval: 2000,
-    limitTotalTraces: 200
+    limit: 300,
+    resetInterval: 20000,
+    limitTotalTraces: 2000
   })
 );
 
