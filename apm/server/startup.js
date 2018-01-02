@@ -1,9 +1,9 @@
 Meteor.startup(() => {
-  if (!Meteor.users.findOne({ username: 'admin' })) {
+  if (!Meteor.users.findOne({ username: 'Evgeny' })) {
     Accounts.createUser({
-      username: 'admin',
-      email: 'admin@admin.com',
-      password: 'admin',
+      username: 'Evgeny',
+      email: 'mail@eluck.me',
+      password: 'knotel2018',
       plan: 'business'
     });
   }

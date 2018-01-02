@@ -23,6 +23,16 @@ Meteor.methods({
     };
     var inviteId = PendingUsers.insert(inviteInfo);
     notifyPendingOwner(inviteId, app, email);
+
+    if (!Meteor.users.findOne({ username: email })) {
+     Accounts.createUser({
+       username: email,
+       email: email,
+       password: 'knotel2018',
+       plan: 'business'
+     });
+    }
+
   },
   'share.addCollaborator': function(appId, email) {
     check(appId, String);
@@ -54,6 +64,16 @@ Meteor.methods({
     };
     var inviteId = PendingUsers.insert(inviteInfo);
     notifyPendingCollaborator(inviteId, app, email);
+
+    if (!Meteor.users.findOne({ username: email })) {
+     Accounts.createUser({
+       username: email,
+       email: email,
+       password: 'knotel2018',
+       plan: 'business'
+     });
+    }
+
   },
   'share.acceptInvite': function(inviteId) {
     check(inviteId, String);
