@@ -20,6 +20,19 @@ This opens the following ports:
 * RMA: 11011
 * API: 7007
 
+You can also use docker to spin up an instance pretty quick:
+
+```
+docker run -d --name apm \
+  -p 4000:80 \
+  -p 7007:7007 \
+  -p 11011:11011 \
+  -e PORT=80 \
+  strictlyskyler/meteor-apm-server:1.0.0
+```
+
+This can be useful for running an instance quickly in your own environment.  All the usual caveats apply; the meteor app is running via the instructions above (therefore not in production mode), and environment variables (e.g. mongodb) can be passed in via docker, as can port bindings.  See the `dockerfile` for details.
+
 ## Login
 
 username: admin@admin.com  
