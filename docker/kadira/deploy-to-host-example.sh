@@ -3,13 +3,12 @@ declare -a servers=(
   "kadira.mydomain.com"
 )
 
-cd ~/.ssh
-key=key.pem
+key='~/.ssh/key.pem'
 dockerImageName=knotel/kadira-apm
 
 #settings consumed by node.js and meteor (example)
-MONGO_URL='mongodb://kadira.mydomain.internal/kadira-app?replicaSet=kadira'
-MONGO_OPLOG_URL='mongodb://kadira.mydomain.internal/local?replicaSet=kadira'
+MONGO_URL='mongodb://kadira.db.mydomain.com/kadira-app?replicaSet=kadira'
+MONGO_OPLOG_URL='mongodb://kadira.db.mydomain.com/local?replicaSet=kadira'
 MAIL_URL='smtp://kadira%40mydomainmail.com:mypassword@smtp.mailgun.org:587'
 ENGINE_PORT=11011
 API_PORT=7007
