@@ -105,7 +105,7 @@ strings.share = {
   pending_collaborators: 'Pending Collaborators',
   pending_user_invite_email_tmpl_subject: 'Accept Invitation for App: <%= appName %>',
   collaborator_invite_email_tmpl:
-    "Hello, <br/><br> Congratulations! You now have access to <b><%= appName %></b> on Kadira. We look forward to see you at kadira often. <br> Please <a href='<%= inviteUrl %>'>Visit Kadira</a> to begin.<br><br>Thank You!",
+    "Hello, <br/><br> Congratulations! You now have access to <b><%= appName %></b> on Kadira. <br> Please <a href='<%= inviteUrl %>'>Visit Kadira</a> to begin.<br>If you are new to Kadira, you can log in using your email and 'kadira2018' as a password. Please, change your password after the first logon!<br><br>Thank You!",
   new_app_owner_not_registered:
     '{$1} is not a registered user in Kadira. Please ask him to register first.',
   invite_not_found: 'Invite not found',
@@ -114,7 +114,7 @@ strings.share = {
   failed_to_add_collaborator: 'failed to add collaborator',
   notify_new_owner_subject: 'You received ownership of application : <%= appName %>',
   notify_new_owner_email_templ:
-    "Hello, <br/><br> Congratulations! You are invited to become the owner of application <a href='<%= appLink %>'><%= appName %></a> on Kadira. Click <a href='<%= inviteUrl %>'> here </a> to accept invitation.",
+    "Hello, <br/><br> Congratulations! You are invited to become the owner of application <a href='<%= appLink %>'><%= appName %></a> on Kadira. Click <a href='<%= inviteUrl %>'> here </a> to accept invitation.<br>If you are new to Kadira, you can log in using your email and 'kadira2018' as a password. Please, change your password after the first logon!<br><br>Thank You!",
   change_owner_not_permitted: 'You are not authorized to change app ownership',
   remove_collaborator_success: 'Collaborator removed successfully',
   add_collaborator_success: 'Collaborator added successfully',
