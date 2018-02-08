@@ -1,0 +1,45 @@
+FROM ubuntu:16.04
+MAINTAINER Knotel
+
+ARG NODE_VERSION
+ARG METEOR_VERSION
+
+VOLUME /logs
+
+# Install base and node.js and required npm packages
+RUN   \
+      apt-get update -y                                                       && \
+      apt-get install -y                                                         \
+      curl git python-minimal build-essential                                 && \
+      apt autoremove -y                                                       && \
+      apt-get clean                                                           && \
+      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+# Install Node.js version corresponding to Meteor version
+RUN   \
+      export NODE_ARCH=x64                                                    && \
+      export NODE_DIST=node-v${NODE_VERSION}-linux-${NODE_ARCH}               && \
+      cd /tmp                                                                 && \
+      curl -O -L http://nodejs.org/dist/v${NODE_VERSION}/${NODE_DIST}.tar.gz  && \
+      tar xvzf ${NODE_DIST}.tar.gz                                            && \
+      rm ${NODE_DIST}.tar.gz                                                  && \
+      rm -rf /opt/nodejs                                                      && \
+      mv ${NODE_DIST} /opt/nodejs                                             && \
+      ln -sf /opt/nodejs/bin/node /usr/bin/node                               && \
+      ln -sf /opt/nodejs/bin/npm /usr/bin/npm
+
+
+# Install yarn
+RUN   npm install -g yarn                                                     && \
+      ln -sf /opt/nodejs/bin/yarn /usr/bin/yarn
+
+
+# Install Meteor
+RUN   curl https://install.meteor.com/?release=$METEOR_VERSION | /bin/sh
+
+ADD build_app.sh /build_app.sh
+
+RUN chmod +x /build_app.sh
+
+ENTRYPOINT ["/build_app.sh"]
