@@ -9,18 +9,20 @@ Feel free to contribute!
 A mongo replica set is required!
 Check 'docker/kadira/deploy-to-host-example.sh' for settings consumed by node.js and meteor and deployment options.
 
-```
-cd docker
-./kadira/build.sh
-./kadira/push-to-registry.sh
-./deploy-to-host.sh
-```
-
 This uses the following ports:
 
 * UI: 3000
 * RMA: 11011
 * API: 7007
+
+You can use the steps below to build your own Kadira image.
+```
+cd docker/kadira
+./build.sh
+./push-to-registry.sh
+./deploy-to-host.sh
+```
+The build script uses our meteor-base images for building and running meteor application bundles. See `docker/meteor-base/` for details.
 
 ## Login
 
