@@ -57,6 +57,6 @@ async function runLong() {
 
 Meteor.startup(() => {
   runShort();
-  runMedium();
-  runLong();
+  setTimeout(() => { runMedium(); },2500);
+  setTimeout(() => { runLong(); },5000);
 });
