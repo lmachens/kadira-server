@@ -10,7 +10,7 @@ The easiest way to get this server up and running is to use the recommended conf
 
 ### Setup steps
 
-1) Clone this repo and run `npm install`.
+1) Clone this repo and run `meteor npm install`.
 
 2) Copy [`mup-placeholder.js`](mup-placeholder.js) to `mup.js`. Replace the placeholder entries in the configuration with your configuration.
 
