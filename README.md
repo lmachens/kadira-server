@@ -30,6 +30,8 @@ This can be useful for running an instance quickly in your own environment with 
 
 2) Copy [`mup-placeholder.js`](mup-placeholder.js) to `mup.js`. Replace the placeholder entries in the configuration with your configuration.
 
+3) Copy [`settings-placeholder.json`](settings-placeholder.json) to `settings.json`. Change any settings as it suits your project (see *Meteor apm settings* section below)
+
 3) Server configuration steps you need to verify prior to deployment:
 
    a) This setup was tested using a server with at least 512MB of RAM.
