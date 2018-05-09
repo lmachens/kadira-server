@@ -8,33 +8,11 @@
 
     <p>2. {{{i18n 'app.config_connect_code'}}}</p>
     <div id="no-data-code-wrap">
-      <ul class="nav nav-tabs" role="tablist">
-
-        <li role="presentation" class="active">
-          <a href="#via-code" aria-controls="via-code" role="tab" data-toggle="tab">Via Code</a>
-        </li>
-
-        <li role="presentation">
-          <a href="#via-meteor-settings" aria-controls="via-meteor-settings" role="tab" data-toggle="tab">Via Meteor Settings</a>
-        </li>
-
-        <li role="presentation">
-          <a href="#via-env" role="tab" aria-controls="via-env" data-toggle="tab">Via Environmental Variables</a>
-        </li>
-
-      </ul>
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="via-code">
-          <p>add following code to `server/kadira.js`</p>
-          <pre><code>Kadira.connect('{{state$appId}}', '{{state$secret}}');</code></pre></div>
-        <div role="tabpanel" class="tab-pane" id="via-meteor-settings">
+        <div role="tabpanel" class="tab-pane active" id="via-meteor-settings">
           <p>add following into your `settings.json` file</p>
-          <pre><code>"kadira": { <br/>  "appId": "{{state$appId}}", <br/>  "appSecret": "{{state$secret}}" <br/> }</code></pre>
+          <pre><code>  "kadira": { <br/>    "appId": "{{state$appId}}", <br/>    "appSecret": "{{state$secret}}", <br/>    "options": { <br/>      "endpoint": "{{state$apmEngineUrl}}" <br/>    }<br/>  }</code></pre>
         </div>
-        <div role="tabpanel" class="tab-pane" id="via-env">
-          <p>export following environmental variable before running your app.</p>
-          <pre><code>export KADIRA_APP_ID={{state$appId}} <br/>export KADIRA_APP_SECRET={{state$secret}}</code></pre>
-         </div>
       </div>
     </div>
 
