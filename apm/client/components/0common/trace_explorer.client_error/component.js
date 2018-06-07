@@ -1,5 +1,4 @@
 import UAParser from 'ua-parser-js';
-import sourceMap  from 'source-map';
 
 var component = FlowComponents.define('traceExplorer.clientError', function(params) {
   this.autorun(function() {

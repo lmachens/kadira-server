@@ -19,7 +19,7 @@ var ERROR_TRACES_FIELDS = [
 var MAXIMUM_ARGS_LENGTH = 1024;
 var MAXIMUM_ARGS_LENGTH_ERROR = '--- argument size exceeds limit ---';
 
-module.exports = function(data) {
+module.exports = function (data) {
   var ttl = expire.getTTL(data.app);
 
   if (data.errors) {
@@ -69,7 +69,7 @@ module.exports = function(data) {
 
       // replace args inside events if it's bigger than allowed size
       if (stack.events && Array.isArray(stack.events)) {
-        stack.events.forEach(function(event) {
+        stack.events.forEach(function (event) {
           for (var key in event) {
             if (event.hasOwnProperty(key)) {
               event[key] = validate(event[key]);
@@ -80,7 +80,7 @@ module.exports = function(data) {
 
       // replace args inside events if it's bigger than allowed size
       if (stack.info && Array.isArray(stack.info)) {
-        stack.info.forEach(function(info) {
+        stack.info.forEach(function (info) {
           for (var key in info) {
             if (info.hasOwnProperty(key)) {
               info[key] = validate(info[key]);

@@ -13,8 +13,6 @@ const sourceMapsConsumer = {};
 
 module.exports = function tracerPersister(collName, mongoDb) {
   return function (app, traces, callback) {
-    let appUrl = '';
-    let srcHash = '';
 
     async.map(traces, deflateEvents, async function (err, compressedTraces) {
         if (err) {
@@ -73,17 +71,19 @@ function mapStackTrace(traceStacks, consumer, message) {
           column: trace.columnNumber
         });
         trace.map = map;
-        mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber} (${map.source}:${map.line}:${map.column})\n`
-      })
+        mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber} (${map.source}:${map.line}:${map.column})\n`;
+      });
       stack.stack = mappedStack;
     }
 
-  })
-  return JSON.stringify(stacks)
+  });
+  return JSON.stringify(stacks);
 }
 
 async function mapErrorStack(compressedTraces) {
-  const mappedCompressedTraces = [...compressedTraces]
+  let appUrl = '';
+  let srcHash = '';
+  const mappedCompressedTraces = [...compressedTraces];
 
 
   // await mappedCompressedTraces.forEach(async (trace) => {
@@ -95,34 +95,41 @@ async function mapErrorStack(compressedTraces) {
       }
 
       if (trace.hash && trace.sourceMap === 'true') {
-        srcHash = trace.hash
+        srcHash = trace.hash;
       }
 
-      const errorMessage = trace.name ? trace.name : 'Undefined error'
+
+      const errorMessage = trace.name ? trace.name : 'Undefined error';
 
       if (appUrl && srcHash) {
         const soureMapUrl = appUrl + '/app.js.map';
 
 
         if (!sourceMapsConsumer[srcHash]) {
-          try {
 
-            const sourceMap = await fetch(soureMapUrl)
+          try {
+            const appSecret = getAppSecret(trace.appId);
+
+            const headers = {
+              'x-auth-token': appSecret,
+            };
+
+            const sourceMap = await fetch(soureMapUrl, {headers})
               .then((res) => {
                   if (res.status !== 200) {
-                    throw new Error('' + res.status + ' response')
+                    throw new Error('' + res.status + ' response');
                   } else {
-                    return res.text()
+                    return res.text();
                   }
                 }
-              )
+              );
             const jsonSourceMap = parseSourceMapInput(sourceMap);
             sourceMapsConsumer[srcHash] = await new SourceMapConsumer(jsonSourceMap);
 
             trace.stacks = mapStackTrace(trace.stacks, sourceMapsConsumer[srcHash], errorMessage);
 
           } catch (err) {
-            console.error('error when fetching source map ' + soureMapUrl + ':', err)
+            console.error('error when fetching source map ' + soureMapUrl + ':', err);
           }
 
         } else {
@@ -134,4 +141,9 @@ async function mapErrorStack(compressedTraces) {
     }
   }
   return mappedCompressedTraces;
+}
+
+function getAppSecret(appId) {
+  const app = Apps.findOne({_id: appId});
+  return app.secret;
 }
