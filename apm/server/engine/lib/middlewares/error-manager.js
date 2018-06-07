@@ -21,7 +21,6 @@ module.exports = function(appDb) {
     var url = req._parsedUrl;
     var ipAddress = getIpAddress(req);
     var data = req.body;
-
     if (!data || !(data.errors instanceof Array)) {
       console.warn('data.errors should be an array');
       return reply(req, res, 'errors should be an array');

@@ -11,6 +11,8 @@ var ERROR_TRACES_FIELDS = [
   'info',
   'stacks',
   'trace',
+  'sourceMap',
+  'hash',
   'source' // deprecated
 ];
 
