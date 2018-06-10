@@ -130,6 +130,7 @@ async function mapErrorStack(compressedTraces) {
 
           } catch (err) {
             console.error('error when fetching source map ' + soureMapUrl + ':', err);
+            return compressedTraces;
           }
 
         } else {
