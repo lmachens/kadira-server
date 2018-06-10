@@ -72,9 +72,9 @@ function mapStackTrace(traceStacks, consumer, message) {
         });
         trace.map = map;
         if (map.line) {
-          mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber} (${map.source}:${map.line}:${map.column})\n`;
+          mappedStack = `${mappedStack}${trace.source} (${map.source}:${map.line}:${map.column})\n`;
         } else {
-          mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber}\n`;
+          mappedStack = `${mappedStack}${trace.source}\n`;
         }
 
       });
@@ -136,7 +136,6 @@ async function mapErrorStack(compressedTraces) {
           } catch (err) {
             console.error('error when fetching source map ' + soureMapUrl + ':', err.message);
             delete sourceMapsConsumer[srcHash];
-            return compressedTraces;
           }
 
         } else {
