@@ -71,7 +71,12 @@ function mapStackTrace(traceStacks, consumer, message) {
           column: trace.columnNumber
         });
         trace.map = map;
-        mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber} (${map.source}:${map.line}:${map.column})\n`;
+        if (map.line) {
+          mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber} (${map.source}:${map.line}:${map.column})\n`;
+        } else {
+          mappedStack = `${mappedStack}${trace.source}:${trace.lineNumber}\n`;
+        }
+
       });
       stack.stack = mappedStack;
     }
@@ -129,7 +134,8 @@ async function mapErrorStack(compressedTraces) {
             trace.stacks = mapStackTrace(trace.stacks, sourceMapsConsumer[srcHash], errorMessage);
 
           } catch (err) {
-            console.error('error when fetching source map ' + soureMapUrl + ':', err);
+            console.error('error when fetching source map ' + soureMapUrl + ':', err.message);
+            delete sourceMapsConsumer[srcHash];
             return compressedTraces;
           }
 
