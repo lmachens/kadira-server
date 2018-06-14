@@ -57,7 +57,9 @@ The default value is 604800000 (1000 * 60 * 60 * 24 * 7 ^= 7 days).
     "appId": "...",
     "appSecret": "...",
     "options": {
-        "endpoint": "http://kadira.mydomain.com:11011"
+        "endpoint": "http://kadira.mydomain.com:11011",
+        "sourceMap": "true",
+        "hash": "f84dea983ab7c071b0ac038b26a9ad11899c062b"
     }
 },
 ```
@@ -73,6 +75,7 @@ The default value is 604800000 (1000 * 60 * 60 * 24 * 7 ^= 7 days).
 * Removed premium packages
 * Replace invalid links to old kadira docs
 * Dockerized bundle
+* Source-maps support (with knotel:meteor-apm-client package)
 
 ## ToDo
 
