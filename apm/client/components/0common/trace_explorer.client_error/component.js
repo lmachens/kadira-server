@@ -19,6 +19,7 @@ var component = FlowComponents.define('traceExplorer.clientError', function(para
     }
 
     this.set('trace', trace);
+
   });
 });
 

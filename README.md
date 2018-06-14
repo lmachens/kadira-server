@@ -45,7 +45,8 @@ When running without NGINX, you can use the following:
     "appId": "...",
     "appSecret": "...",
     "options": {
-        "endpoint": "http://your_host:11011"
+        "endpoint": "http://your_host:11011",
+        "sourceMap": "true"
     }
 },
 ```
@@ -59,6 +60,9 @@ But as our webapp works using HTTPS, metrics and errors should be collected usin
 * Remove raw data after processed
 * Use Meteor 1.6 (Node v8)
 * Removed premium packages
+* Replace invalid links to old kadira docs
+* Dockerized bundle
+* Source-maps support (with knotel:meteor-apm-client package)
 
 ## ToDo
 
