@@ -90,8 +90,6 @@ async function mapErrorStack(compressedTraces) {
   let srcHash = '';
   const mappedCompressedTraces = [...compressedTraces];
 
-
-  // await mappedCompressedTraces.forEach(async (trace) => {
   for (let trace of mappedCompressedTraces) {
     if (trace && trace.type && trace.type === 'client' && trace.stacks) {
       if (trace.info && trace.info.url) {
@@ -101,6 +99,7 @@ async function mapErrorStack(compressedTraces) {
 
       if (trace.hash && trace.sourceMap === 'true') {
         srcHash = trace.hash;
+
       }
 
 
@@ -118,7 +117,7 @@ async function mapErrorStack(compressedTraces) {
             const headers = {
               'x-auth-token': appSecret,
             };
-
+            console.log(`Get source-map from ${soureMapUrl} for hash:${srcHash}`);
             const sourceMap = await fetch(soureMapUrl, {headers})
               .then((res) => {
                   if (res.status !== 200) {
