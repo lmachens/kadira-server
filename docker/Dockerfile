@@ -13,23 +13,11 @@ RUN bash -cx "								        \
  cd /app                                         && \
  rm -rf /app/.meteor/local                       && \
  yarn --prefer-offline --emoji --non-interactive && \
- meteor build --directory /tmp/the-app            ; \
  meteor build --directory /tmp/the-app           && \
  mv /tmp/the-app/bundle /built_app               && \
  cd /built_app/programs/server/                  && \
  yarn --prefer-offline --emoji --non-interactive && \
  chmod -R 777 /built_app"
-
-# First 'meteor build' gives:
-#
-#    Errors prevented bundling:                    
-#    While processing files with less (for target web.browser):
-#    client/0config/bootstrap/custom.bootstrap.import.less:6: 
-#    Unknown import: custom.bootstrap.mixins.import.less
-#
-# as meteor can't wait for compileLessBatch to 
-# successfully create needed files during first run.
-# So running 'meteor build' again shows no errors.
 
 FROM registry.knotable.com:443/meteord-webapp-runtime:1.6.0.1
 
