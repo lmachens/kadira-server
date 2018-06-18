@@ -1,4 +1,4 @@
-FROM knotel/meteord-webapp-buildtime:1.6.0.1 as builder
+FROM knotel/meteord-webapp-buildtime:1.6.1.1 as builder
 
 MAINTAINER Knotel
 
@@ -34,7 +34,7 @@ RUN bash -cx "                                      \
 # But running 'meteor build' again after that gives no errors
 # as compileLessBatch successfully creates needed files during first run.
 
-FROM knotel/meteord-webapp-runtime:1.6.0.1
+FROM knotel/meteord-webapp-runtime:1.6.1.1
 
 MAINTAINER Knotel
 

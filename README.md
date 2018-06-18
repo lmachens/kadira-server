@@ -1,4 +1,4 @@
-# Kadira APM
+# Meteor APM Server (ex. Kadira)
 
 This project reduces the original Kadira APM to a single Meteor project.
 Most of the original features are working (like Slack alerts), but there is still a lot of work.
