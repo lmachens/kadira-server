@@ -10,8 +10,12 @@ if ! [ -n "$BASH_VERSION" ];then
 fi
 
 # Let's set Meteor and corresponding NodeJS versions 
-meteorVersion=1.6.0.1
-nodeVersion=8.9.3
+meteorVersion=1.6.1.1
+nodeVersion=8.11.1
+#meteorVersion=1.6.1
+#nodeVersion=8.9.4
+#meteorVersion=1.6.0.1
+#nodeVersion=8.9.3
 #meteorVersion=1.5.2.2
 #nodeVersion=4.8.4
 #meteorVersion=1.4.2.3

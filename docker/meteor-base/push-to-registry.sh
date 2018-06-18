@@ -8,7 +8,7 @@ if ! [ -n "$BASH_VERSION" ];then
     exit;
 fi
 
-meteorVersion=1.6.0.1
+meteorVersion=1.6.1.1
 #meteorVersion=1.5.1
 #meteorVersion=1.4.2.3
 
