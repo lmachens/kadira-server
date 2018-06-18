@@ -1,4 +1,4 @@
-FROM registry.knotable.com:443/meteord-webapp-buildtime:1.6.1 as builder
+FROM registry.knotable.com:443/meteord-webapp-buildtime:1.6.1.1 as builder
 
 LABEL to_remove=yes
 
@@ -31,7 +31,7 @@ RUN bash -cx "								        \
 # successfully create needed files during first run.
 # So running 'meteor build' again shows no errors.
 
-FROM registry.knotable.com:443/meteord-webapp-runtime:1.6.1
+FROM registry.knotable.com:443/meteord-webapp-runtime:1.6.1.1
 
 MAINTAINER Knotel
 
