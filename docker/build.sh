@@ -26,11 +26,6 @@ if [ ! `pwd` == $root_directory ] ; then
   echo -e "\nChanging to root directory: $root_directory"
   cd $root_directory
 fi
-
-# Set up environment for Mac
-if [ "$(uname)" == "Darwin" ]; then
-  source docker/docker-machine-setup.sh
-fi
 ################## docker setup ######################
 
 function checkRepo {
