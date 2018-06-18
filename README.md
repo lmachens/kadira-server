@@ -7,7 +7,7 @@ Feel free to contribute!
 ## Running it
 
 A mongo replica set is required!
-Check 'docker/kadira/deploy-to-host-example.sh' for settings consumed by node.js and meteor and deployment options.
+Check 'docker/meteor-apm-server/deploy-to-host-example.sh' for settings consumed by node.js and meteor and deployment options.
 
 This uses the following ports:
 
@@ -15,9 +15,9 @@ This uses the following ports:
 * RMA: 11011
 * API: 7007
 
-You can use the steps below to build your own Kadira image.
+You can use the steps below to build your own APM image.
 ```
-cd docker/kadira
+cd docker/meteor-apm-server
 ./build.sh
 ./push-to-registry.sh
 ./deploy-to-host.sh
@@ -63,7 +63,7 @@ The default value is 604800000 (1000 * 60 * 60 * 24 * 7 ^= 7 days).
     }
 },
 ```
-### ATTENTION! As most webapps work using HTTPS, metrics and errors should be collected using HTTPS connection to Kadira APM, too. You can build NGINX image for it, using example settings provided in ./docker/nginx folder of this repo.
+### ATTENTION! As most webapps work using HTTPS, metrics and errors should be collected using HTTPS connection to APM, too. You can build NGINX image for it, using example settings provided in ./docker/nginx folder of this repo.
 
 ## Changes to original Kadira
 

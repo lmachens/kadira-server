@@ -9,7 +9,7 @@ if ! [ -n "$BASH_VERSION" ];then
 fi
 
 declare -a images=(
-  "knotel/kadira-nginx nginx.Dockerfile"
+  "knotel/apm-nginx nginx.Dockerfile"
 )
 
 ################## docker setup ######################

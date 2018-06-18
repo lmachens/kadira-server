@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 declare -a servers=(
-  "kadira.mydomain.com"
+  "apm.mydomain.com"
 )
 
 key='~/.ssh/key.pem'
-dockerImageName=knotel/kadira-apm
+dockerImageName=knotel/meteor-apm-server
 
 #settings consumed by node.js and meteor (example)
-MONGO_URL='mongodb://kadira.db.mydomain.com/kadira-app?replicaSet=kadira'
-MONGO_OPLOG_URL='mongodb://kadira.db.mydomain.com/local?replicaSet=kadira'
-MAIL_URL='smtp://kadira%40mydomainmail.com:mypassword@smtp.mailgun.org:587'
+MONGO_URL='mongodb://apm.db.mydomain.com/apm-app?replicaSet=apmRS'
+MONGO_OPLOG_URL='mongodb://apm.db.mydomain.com/local?replicaSet=apmRS'
+MAIL_URL='smtp://apm%40mydomainmail.com:mypassword@smtp.mailgun.org:587'
 ENGINE_PORT=11011
 API_PORT=7007
 ROOT_URL='https://'$HOSTNAME
@@ -17,21 +17,21 @@ PORT=3000
 
 function launchServiceOnServer {
   echo "
-      Launching Kadira on $1
+      Launching Meteor APM Server on $1
   "
   ssh -i $key ubuntu@$1 bash -c "        \
     echo 'Logging in...'               ; \
     docker tag $dockerImageName $dockerImageName:old 2>/dev/null ; \
     docker pull $dockerImageName     &&  \
-    docker rm -fv kadira &>/dev/null  ;  \
+    docker rm -fv apm &>/dev/null  ;  \
     sleep 2                           ;  \
     docker run -d                        \
-     --name kadira                       \
+     --name apm                       \
      --hostname $1                       \
      -p 3000:3000                        \
      -p 11011:11011                      \
      -p 7007:7007                        \
-     -v /knotel/kadira:/logs             \
+     -v /knotel/apm:/logs             \
      -e MONGO_URL=$MONGO_URL             \
      -e MONGO_OPLOG_URL=$MONGO_OPLOG_URL \
      -e MAIL_URL=$MAIL_URL               \

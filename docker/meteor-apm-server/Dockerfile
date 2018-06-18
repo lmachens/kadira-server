@@ -40,7 +40,7 @@ MAINTAINER Knotel
 
 VOLUME /logs
 
-ADD ./docker/kadira/conf  /conf
+ADD ./docker/meteor-apm-server/conf  /conf
 
 COPY --from=builder /built_app  /built_app
 

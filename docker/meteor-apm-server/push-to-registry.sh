@@ -9,7 +9,7 @@ if ! [ -n "$BASH_VERSION" ];then
 fi
 
 declare -a images=(
- "knotel/kadira-apm"
+ "knotel/meteor-apm-server"
 )
 
 ################## docker setup ######################

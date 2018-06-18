@@ -9,7 +9,7 @@ if ! [ -n "$BASH_VERSION" ];then
 fi
 
 declare -a images=(
-  "knotel/kadira-apm docker/kadira/Dockerfile"
+  "knotel/meteor-apm-server docker/meteor-apm-server/Dockerfile"
 )
 
 ################## docker setup ######################
@@ -29,7 +29,7 @@ fi
 
 # Set up environment for Mac
 if [ "$(uname)" == "Darwin" ]; then
-  source docker/kadira/docker-machine-setup.sh
+  source docker/meteor-apm-server/docker-machine-setup.sh
 fi
 ################## docker setup ######################
 
