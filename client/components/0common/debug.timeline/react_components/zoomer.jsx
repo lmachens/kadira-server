@@ -1,10 +1,13 @@
-TimelineComponent.Zoomer = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimelineComponent.Zoomer = createReactClass({
   propTypes: {
     // initial scale of the zoomer
-    initialScale: React.PropTypes.number.isRequired,
+    initialScale: PropTypes.number.isRequired,
 
     // EVENTS
-    onChange: React.PropTypes.func
+    onChange: PropTypes.func
   },
   getInitialState() {
     var state = { scale: this.props.initialScale };

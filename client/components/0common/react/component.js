@@ -1,3 +1,5 @@
+import React from 'react';
+
 FlowComponents.define('react', function(props) {
   this.onRendered(function() {
     var dom = this.find('div');

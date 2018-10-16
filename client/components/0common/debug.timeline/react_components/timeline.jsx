@@ -1,4 +1,6 @@
-TimelineComponent.Timeline = React.createClass({
+import createReactClass from 'create-react-class';
+
+TimelineComponent.Timeline = createReactClass({
   displayName: 'TimelineComponent.Timeline',
   mixins: [ReactMeteorData],
   getMeteorData() {

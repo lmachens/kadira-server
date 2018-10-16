@@ -1,10 +1,13 @@
-TimelineComponent.TraceTimeBar = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimelineComponent.TraceTimeBar = createReactClass({
   displayName: 'TimelineComponent.TraceTimeBar',
   propTypes: {
-    maxSectionWidth: React.PropTypes.number.isRequired,
-    sectionHeight: React.PropTypes.number.isRequired,
-    sectionPadding: React.PropTypes.number.isRequired,
-    sections: React.PropTypes.array.isRequired
+    maxSectionWidth: PropTypes.number.isRequired,
+    sectionHeight: PropTypes.number.isRequired,
+    sectionPadding: PropTypes.number.isRequired,
+    sections: PropTypes.array.isRequired
   },
   componentWillMount() {
     // find the max time in the sections. Usefull getting the width

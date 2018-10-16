@@ -1,10 +1,13 @@
-TimeSeriesSingle.SeriesRow = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimeSeriesSingle.SeriesRow = createReactClass({
   propTypes: {
-    color: React.PropTypes.string.isRequired,
-    link: React.PropTypes.string.isRequired,
-    minValue: React.PropTypes.number.isRequired,
-    maxValue: React.PropTypes.number.isRequired,
-    activeValue: React.PropTypes.number.isRequired
+    color: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    minValue: PropTypes.number.isRequired,
+    maxValue: PropTypes.number.isRequired,
+    activeValue: PropTypes.number.isRequired
   },
   render() {
     return (
@@ -33,7 +36,7 @@ TimeSeriesSingle.SeriesRow = React.createClass({
   }
 });
 
-TimeSeriesSingle.HostsList = React.createClass({
+TimeSeriesSingle.HostsList = createReactClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     var fullscreenDataMap = this.props.fullscreenDataMapFn();

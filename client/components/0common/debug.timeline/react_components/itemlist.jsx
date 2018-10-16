@@ -1,11 +1,14 @@
-TimelineComponent.ItemList = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimelineComponent.ItemList = createReactClass({
   displayName: 'TimelineComponent.ItemList',
   propTypes: {
     // array of items
-    items: React.PropTypes.array.isRequired,
+    items: PropTypes.array.isRequired,
 
     // EVENTS
-    onClick: React.PropTypes.func
+    onClick: PropTypes.func
   },
   _getItemName(item) {
     var itemName = item.name;

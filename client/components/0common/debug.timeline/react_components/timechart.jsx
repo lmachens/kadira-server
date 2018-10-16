@@ -1,14 +1,17 @@
-TimelineComponent.TimeChart = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimelineComponent.TimeChart = createReactClass({
   displayName: 'TimelineComponent.TimeChart',
   propTypes: {
     // positional props
-    height: React.PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
     // width can be both a number or a percentage like "100%"
-    width: React.PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
     // width of the background grid
-    gridWidth: React.PropTypes.number.isRequired,
+    gridWidth: PropTypes.number.isRequired,
     // Timebar list
-    items: React.PropTypes.array.isRequired
+    items: PropTypes.array.isRequired
   },
   _buildTimeBar(item) {
     var props = _.clone(item);

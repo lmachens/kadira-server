@@ -1,3 +1,5 @@
+import React from 'react';
+
 var component = FlowComponents.define('debug.timeline', function(props) {
   var self = this;
   var sessionId = props.sessionId;

@@ -1,10 +1,13 @@
-TimelineComponent.TimeBar = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimelineComponent.TimeBar = createReactClass({
   displayName: 'TimelineComponent.TimeBar',
   propTypes: {
     // id for the timebar
-    itemId: React.PropTypes.string.isRequired,
+    itemId: PropTypes.string.isRequired,
     // array of sections in the timebar
-    sections: React.PropTypes.array.isRequired
+    sections: PropTypes.array.isRequired
   },
   createTimeBarSection(section, index) {
     var itemId = this.props.itemId;

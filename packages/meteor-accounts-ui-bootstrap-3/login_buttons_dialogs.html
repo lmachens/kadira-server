@@ -1,0 +1,178 @@
+<body>
+	{{> _resetPasswordDialog}}
+	{{> _enrollAccountDialog}}
+	{{> _justVerifiedEmailDialog}}
+	{{> _configureLoginServiceDialog}}
+	{{> _loginButtonsMessagesDialog}}
+</body>
+
+<template name="_resetPasswordDialog">
+	{{#if inResetPasswordFlow}}
+		<div class="modal" id="login-buttons-reset-password-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">{{i18n 'resetPasswordDialog.title'}}</h4>
+					</div>
+					<div class="modal-body">
+						{{> _loginButtonsMessages}}
+						<input id="reset-password-new-password" class="form-control" type="password" placeholder="{{i18n 'resetPasswordDialog.newPassword'}}"/><br>
+						<input id="reset-password-new-password-again" class="form-control" type="password" placeholder="{{i18n 'resetPasswordDialog.newPasswordAgain'}}"/><br>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-default" id="login-buttons-cancel-reset-password">{{i18n 'resetPasswordDialog.cancel'}}</a>
+						<button class="btn btn-primary" id="login-buttons-reset-password-button">
+							{{i18n 'resetPasswordDialog.submit'}}
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dalog -->
+		</div><!-- /.modal -->
+	{{/if}}
+
+	<div class="modal" id="login-buttons-reset-password-modal-success">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">{{i18n 'resetPasswordDialog.title'}}</h4>
+				</div>
+				<div class="modal-body">
+					{{> _loginButtonsMessages}}
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-default" id="login-buttons-dismiss-reset-password-success">{{i18n 'loginButtonsMessagesDialog.dismiss'}}</a>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dalog -->
+	</div><!-- /.modal -->
+</template>
+
+<template name="_enrollAccountDialog">
+	{{#if inEnrollAccountFlow}}
+		<div class="modal" id="login-buttons-enroll-account-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">{{i18n 'enrollAccountDialog.title'}}</h4>
+					</div>
+					<div class="modal-body">
+						<input id="enroll-account-password" class="form-control" type="password" placeholder="{{i18n 'enrollAccountDialog.newPassword'}}" /><br>
+												<input id="enroll-account-password-again" class="form-control" type="password" placeholder="{{i18n 'enrollAccountDialog.newPasswordAgain'}}" /><br>
+						{{> _loginButtonsMessages}}
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-default" id="login-buttons-cancel-enroll-account-button">{{i18n 'enrollAccountDialog.cancel'}}</a>
+						<button class="btn btn-primary" id="login-buttons-enroll-account-button">
+							{{i18n 'enrollAccountDialog.submit'}}
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dalog -->
+		</div><!-- /.modal -->
+	{{/if}}
+</template>
+
+<template name="_justVerifiedEmailDialog">
+	{{#if visible}}
+		<div class="modal" id="login-buttons-email-address-verified-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h4><b>{{i18n 'justVerifiedEmailDialog.verified'}}</b></h4>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary login-button" id="just-verified-dismiss-button" data-dismiss="modal">{{i18n 'justVerifiedEmailDialog.dismiss'}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
+</template>
+
+<template name="_configureLoginServiceDialog">
+	{{#if visible}}
+		<div class="modal" id="configure-login-service-dialog-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Configure Service</h4>
+					</div>
+					<div class="modal-body">
+						<div id="configure-login-service-dialog" class="accounts-dialog accounts-centered-dialog">
+								{{> configurationSteps}}
+								<p>
+								Now, copy over some details.
+								</p>
+								<p>
+								<table>
+									<colgroup>
+										<col span="1" class="configuration_labels">
+										<col span="1" class="configuration_inputs">
+									</colgroup>
+									{{#each configurationFields}}
+										<tr>
+											<td>
+												<label for="configure-login-service-dialog-{{property}}">{{label}}</label>
+											</td>
+											<td>
+												<input id="configure-login-service-dialog-{{property}}" type="text" />
+											</td>
+										</tr>
+									{{/each}}
+								</table>
+								</p>
+								<p class="new-section">
+									Choose the login style:
+								</p>
+								<p>
+									&emsp;<input id="configure-login-service-dialog-popupBasedLogin" type="radio" checked="checked" name="loginStyle" value="popup">
+									<label for="configure-login-service-dialog-popupBasedLogin">Popup-based login (recommended for most applications)</label>
+
+									<br>&emsp;<input id="configure-login-service-dialog-redirectBasedLogin" type="radio" name="loginStyle" value="redirect">
+									<label for="configure-login-service-dialog-redirectBasedLogin">
+									Redirect-based login (special cases explained
+									<a href="https://github.com/meteor/meteor/wiki/OAuth-for-mobile-Meteor-clients#popup-versus-redirect-flow"
+									target="_blank">here</a>)
+									</label>
+								</p>
+						</div>
+					</div>
+					<div class="modal-footer new-section">
+						<div class="login-button btn btn-danger configure-login-service-dismiss-button">
+							I'll do this later
+						</div>
+						<div class="login-button login-button-configure btn btn-success {{#if saveDisabled}}login-button-disabled{{/if}}"
+								id="configure-login-service-dialog-save-configuration">
+							Save Configuration
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
+</template>
+
+<template name="_loginButtonsMessagesDialog">
+	<div class="modal" id="login-buttons-message-dialog">
+		{{#if visible}}
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{i18n 'errorMessages.genericTitle'}}</h4>
+				</div>
+				<div class="modal-body">
+					{{> _loginButtonsMessages}}
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary login-button" id="messages-dialog-dismiss-button" data-dismiss="modal">{{i18n 'loginButtonsMessagesDialog.dismiss'}}</button>
+				</div>
+			</div>
+		</div>
+		{{/if}}
+	</div>
+</template>

@@ -1,7 +1,10 @@
-TimelineComponent.Grid = React.createClass({
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
+
+TimelineComponent.Grid = createReactClass({
   displayName: 'TimelineComponent.Grid',
   propTypes: {
-    width: React.PropTypes.number.isRequired
+    width: PropTypes.number.isRequired
   },
   _getGridPattern() {
     return 'M 0 0 L 0 0 0 ' + this.props.width;
