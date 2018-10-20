@@ -5,7 +5,6 @@ var helpData = {
     title: 'About Event Stream',
     message:
       'This is list of all the events happening in your client side app. List will update as you do actions on your app. These events include route changes, methods and subscriptions, data updates, DOM events, and many other key events.',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -14,7 +13,6 @@ var helpData = {
     title: 'About Event Stream Filters',
     message:
       'There may be a lot of events in your app. So, you may need to filter events by types.',
-    // url: '',
     options: {
       placement: 'top'
     }

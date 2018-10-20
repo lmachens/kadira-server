@@ -5,7 +5,6 @@ var helpData = {
     title: 'About Average Response Time',
     message:
       'This chart shows the average response time for sending the initial data set for subscriptions. We calculate this metric when we detect this.ready() for a publication. This chart shows you whether your subscriptions are slow to process initially. ﻿',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -22,7 +21,6 @@ var helpData = {
   'timeseries-sessions': {
     title: 'About Total Sessions',
     message: 'This chart shows the total number of sessions in the given time range.',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -30,7 +28,6 @@ var helpData = {
   'timeseries-methodResTime': {
     title: 'About Average Response Time',
     message: 'This chart shows response time for method calls for the selected date range. The X-axis contains the date and the Y-axis contains the response time in milliseconds. ',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -47,7 +44,6 @@ var helpData = {
   'timeseries-createdObservers': {
     title: 'About Created Observers',
     message: 'This chart shows total number of new Observers created in the given time range. Even though there are e.g. 1000 observers, actual number of observers will be less than 1000 because of  observer reuse. If there are identical cursors then existing observers are reused. New observers reflects the actual number of observers initiated.',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -55,7 +51,6 @@ var helpData = {
   'summary-dashboardOverview': {
     title: 'About Dashboard Summary',
     message: 'Dashboard Summary is a set of important performance metrics for your application.',
-    // url: '',
     options: {
       placement: 'bottom'
     }

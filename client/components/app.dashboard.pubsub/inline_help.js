@@ -5,7 +5,6 @@ var helpData = {
     title: 'About Publications Breakdown',
     message:
       'Using the Publication Breakdown, you can drill down into publication-specific metrics.',
-    // url: '',
     options: {
       placement: 'top'
     }
@@ -13,7 +12,6 @@ var helpData = {
   'timeseries-subRate': {
     title: 'About Sub Rate',
     message: 'This chart shows the number of subscriptions received by minute.',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -21,7 +19,6 @@ var helpData = {
   'timeseries-pubsubResTimeWithTraces': {
     title: 'About Response Time with Traces',
     message: 'The Response Time is the time the server takes to execute your method or publication (it also includes the Wait Time). In publications, the Response Time is calculate until the server emits the ready message. Therefore, this is the time taken to fetch all the cursor data and push it to the client.',
-    // url: '',
     options: {
       placement: 'bottom'
     }
@@ -30,7 +27,6 @@ var helpData = {
     title: 'About PubSub Summery',
     message:
       'PubSub Summary shows the summary of the publications and subscriptions in the selected date range.',
-    // url: '',
     options: {
       placement: 'bottom'
     }
